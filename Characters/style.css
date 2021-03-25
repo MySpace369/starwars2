@@ -1,0 +1,19 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+img {
+  height: 200px;
+}
+
+#peoplelist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}

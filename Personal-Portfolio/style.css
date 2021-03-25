@@ -1,0 +1,108 @@
+body {
+  font-family: roboto;
+  text-align: center;
+}
+
+#navbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.navlist {
+  color: black;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  list-style: none;
+  background-color:goldenrod;
+}
+
+.navlist a {
+  color: #3a3b3c;
+  display: block;
+  font-size: x-large;
+  font-weight: bold;
+  padding: 0.75em 0.5em;
+}
+
+.navlist a:hover {
+  background-color: grey;
+}
+
+#welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3a3b3c;
+  color: white;
+  font-size: 25px;
+  width: 100%;
+  height: 90vh;
+}
+
+p {
+  font-size: 20px;
+}
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: black;
+}
+
+.project-tile:hover {
+  color: gray;
+}
+
+figcaption {
+  color: #f2f2f2;
+  text-align: center;
+}
+
+figcaption:hover {
+  color: goldenrod;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #f2f2f2;
+  background-color: #3a3b3c;
+  height: 45vh;
+}
+
+.contact-links a {
+  margin: 1em;
+}
+
+.contact-links a:hover {
+  color: goldenrod;
+}
+
+a {
+  text-decoration: none;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: whitesmoke;
+  background-color: black;
+  height: 50px;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 100%;
+  }
+}
