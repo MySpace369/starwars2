@@ -1,0 +1,44 @@
+:root {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    /* height: 100vh; */
+}
+
+.shipView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    width: 200px;
+}
+
+img, nav {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    width: 200px;
+    height: 100px;
+}

@@ -2,10 +2,11 @@ import { starships } from '../data/starships.js'
 import { getLastNumber, removeChildren } from '../utils/index.js'
 
 const nav = document.querySelector('nav')
-const navList = document.querySelector('.navList')
+const navList = document.getElementById("navList") // see if thor can make this work
 const shipView = document.querySelector('.shipView')
-
+//console.log(navList)
 const dialog = document.querySelector('.modal')
+//console.log(dialog)
 const closeButton = document.querySelector('.modal-close')
 const modalBackground = document.querySelector('.modal-background')
 
@@ -26,7 +27,7 @@ function populateNav(starships) {
         listItem.textContent = starship.name
 
         anchorWrap.appendChild(listItem)
-        navList.appendChild(anchorWrap)
+        nav.appendChild(anchorWrap)
     })
 }
 
