@@ -2,7 +2,7 @@ import { starships } from '../data/starships.js'
 import { getLastNumber, removeChildren } from '../utils/index.js'
 
 const nav = document.querySelector('nav')
-const navList = document.getElementById("navList") // see if thor can make this work
+const navList = document.getElementById("#navList") // see if thor can make this work
 const shipView = document.querySelector('.shipView')
 //console.log(navList)
 const dialog = document.querySelector('.modal')
@@ -35,9 +35,9 @@ function populateShipView(shipData) {
     removeChildren(shipView)
     let shipNum = getLastNumber(shipData.url)
     let shipImage = document.createElement('img')
-    shipImage.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`
+    shipImage.src = `https://starwars-visualguide.com/#/starships?${shipNum}.jpg`
     shipImage.addEventListener('error', (err) => {
-        console.log(`Oops! Image doesn't exist.`)
+    
         shipImage.hidden = true
         dialog.classList.toggle("is-active")
     })
