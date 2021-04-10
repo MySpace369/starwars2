@@ -11,20 +11,29 @@
 </head>
 <body>
     <h1>Pokemon! Gotta Catch Em All</h1>
+      <button class="loadPokemon button is-primary">Load Pokemon</button>
+      <button id="fetchSelectedPokemon" class="button is-info">Fetch Selected Pokemon</button>
     <main>
         <div class = "cardContainer"></div>
-        
-        
-        <!-- <div class="card">
+        <div class="card">
             <div class="content">
                 <div class="front">
                     Front
                 </div>
                 <div class="back">
                     Back!
+                    <form class="box">
+                        <div class="field">
+                          <label class="label">Enter the ID of the Pokemon you want to fetch:</label>
+                          <div class="control">
+                            <input class="input" type="number" placeholder="e.g. 1 for Bulbasaur">
+                          </div>
+                        </div>
+                        <button id="submitButton" class="button is-primary">Submit</button>
+                      </form>
                 </div>
             </div>
-        </div> -->
+        </div>
         <a href ="http://127.0.0.1:5500/Personal-Portfolio/index.html">Home</a>
     </main>
 </body>
