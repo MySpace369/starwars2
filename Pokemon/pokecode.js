@@ -9,16 +9,37 @@ loadButton.addEventListener('click', () => {
 fetchButton.addEventListener('click', () => {
     getAPIData(`https://pokeapi.co/api/v2/pokemon/25`).then(
         (data) => {
-            populatePokeCard(data)
+            makeCard(data)
         }
     )
 })
 
+async function getAPIData(url) {
+    try{
+        const response = await fetch(url)
+        const data = await response.json()
+            return data
+    } catch (error) {
+
+    }
+}
+
+// function fetchKantoPokemon() {
 // function fetchKantoPokemon() {
 
+    // fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
 //     fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
 
+    // .then(response => response.json())
 //     .then(response => response.json())
+
+//     .then(function(allpokemon) {
+//         allpokemon.results.forEach(function(pokemon){
+//             console.log(pokemon)
+//             makeCard(pokemon)
+// //         })
+// //     })
+// // }
 
 //     .then(function(allpokemon) {
 //         allpokemon.results.forEach(function(pokemon){
@@ -28,6 +49,18 @@ fetchButton.addEventListener('click', () => {
 //     })
 // }
 
+function loadPage() {
+    getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=748`).then(
+        async (data) => {
+            for (const singlePokemon of data.results) {
+                await getAPIData(singlePokemon.url).then(
+                    (pokeData) => makeCard(pokeData)
+                )
+            }
+        }
+    )
+}
+
 
 
 function makeCard(data){
@@ -35,42 +68,28 @@ function makeCard(data){
     let content = document.createElement('div')
     let front = document.createElement('div')
     let back = document.createElement('div')
-
-    // let frontImage = document.createElement('img')
-    // frontImage.src = `images/${getImageFileName(pokemon)}.png`
-
+  
+    let frontImage = document.createElement('img')
+    frontImage.src = getImageFileName(data)
+    
     card.className = "card"
     content.className = "content"
     front.className = "front"
     back.className = "back"
-
     ///// populate card data //////
     let nameTag = document.createElement('p')
     nameTag.textContent = data.name
 
 
-
-
     card.appendChild(content)
     content.appendChild(front)
     content.appendChild(back)
-    front.appendChild(nameTag)
+    front.appendChild(frontImage)
     CARDCONTAINER.appendChild(card)
-
 }
 
-/* 
-<div class="card">
-    <div class="content">
-        <div class="front">
-            Front
-        </div>
-        <div class="back">
-            Back!
-    </div>
-</div>
-*/
-fetchKantoPokemon()
+fetchKantoPokemon() 
+
 
 function getImageFileName(pokemon) {
     let pokeId
@@ -78,4 +97,4 @@ function getImageFileName(pokemon) {
     if (pokemon.id > 9 && pokemon.id < 100) pokeId = `0${pokemon.id}`
     if (pokemon.id > 99 && pokemon.id < 810) pokeId = pokemon.id
     return `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokeId}.png`
-}
+} 
