@@ -37,7 +37,7 @@ body {
     height: 100%;
     width: 100%;
     background: white;
-    line-height: 300px;
+    /* line-height: 300px; */
     color: #03446A;
     text-align: center;
     font-size: 60px;
@@ -62,6 +62,10 @@ body {
 
   .front p{
     font-size: 30px;
+  }
+
+  .front img {
+    width: 200px;
   }
   /* main {
     width: 100%;
