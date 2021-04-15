@@ -14,19 +14,20 @@ fetchButton.addEventListener('click', () => {
     )
 })
 
-function fetchKantoPokemon() {
+// function fetchKantoPokemon() {
 
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
+//     fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
 
-    .then(response => response.json())
+//     .then(response => response.json())
 
-    .then(function(allpokemon) {
-        allpokemon.results.forEach(function(pokemon){
-            console.log(pokemon)
-            makeCard(pokemon)
-        })
-    })
-}
+//     .then(function(allpokemon) {
+//         allpokemon.results.forEach(function(pokemon){
+//             console.log(pokemon)
+//             makeCard(pokemon)
+//         })
+//     })
+// }
+
 
 
 function makeCard(data){
@@ -47,17 +48,7 @@ function makeCard(data){
     let nameTag = document.createElement('p')
     nameTag.textContent = data.name
 
-    function loadPage() {
-        getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=748`).then(
-            async (data) => {
-                for (const singlePokemon of data.results) {
-                    await getAPIData(singlePokemon.url).then(
-                        (pokeData) => populatePokeCard(pokeData)
-                    )
-                }
-            }
-        )
-    }
+
 
 
     card.appendChild(content)
@@ -80,3 +71,11 @@ function makeCard(data){
 </div>
 */
 fetchKantoPokemon()
+
+function getImageFileName(pokemon) {
+    let pokeId
+    if (pokemon.id < 10) pokeId = `00${pokemon.id}`
+    if (pokemon.id > 9 && pokemon.id < 100) pokeId = `0${pokemon.id}`
+    if (pokemon.id > 99 && pokemon.id < 810) pokeId = pokemon.id
+    return `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokeId}.png`
+}

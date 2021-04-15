@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.congressGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.figureDiv {
+  padding: 6px;
+  margin: 6px;
+  border: 1p black;
+  box-shadow: 3px 3px 3px black;
+}
+
+figure {
+  width: 100px;
+}
+
+figcaption {
+  text-align: center;
+}
