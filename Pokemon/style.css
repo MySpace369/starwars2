@@ -4,14 +4,8 @@ body {
   }
   
   .card {
-    /* position: absolute; */
-    /* top: 50%;
-    left: 50%; */
-
     width: 200px;
     height: 300px;
-    /* margin: -150px; */
-    /* float: left; */
     perspective: 500px;
     margin: 10px;
   }
@@ -38,16 +32,16 @@ body {
     width: 100%;
     background: white;
     /* line-height: 300px; */
-    color: #03446A;
+    color:red;
     text-align: center;
     font-size: 60px;
     border-radius: 5px;
     backface-visibility: hidden;
   }
-  
+
   .back {
-    background: #03446A;
-    color: white;
+    background: black;
+    /* color:rgba(0,0,0,0.1); */
     transform: rotateY( 180deg );
   }
 

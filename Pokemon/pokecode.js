@@ -2,8 +2,41 @@ const CARDCONTAINER = document.querySelector(".cardContainer")
 const loadButton = document.querySelector('.loadPokemon')
 const fetchButton = document.querySelector('#fetchSelectedPokemon')
 
+class Pokemon {
+    constructor(name, height, weight, abilities, moves) {
+        this.id = 900
+        this.name = name
+        this.height = height
+        this.weight = weight
+        this.abilities = abilities
+        this.moves = moves
+    }
+}
+
 loadButton.addEventListener('click', () => {
     loadPage()
+})
+
+newButton.addEventListener('click', () => {//New Button is not defined//
+    let pokeName = prompt('What is the name of your new Pokemon?')
+    let pokeHeight = prompt('What is the height of your Pokemon?')
+    let pokeWeight = prompt('Pokemon weight?')
+    let newPokemon = new Pokemon(
+        pokeName,
+        pokeHeight,
+        pokeWeight,
+        ['eat', 'sleep'],
+        ['study', 'game']
+    )
+     populatePokeCard(newPokemon)
+})
+
+fetchButton.addEventListener('click', () => {
+    let pokeNameOrId = prompt("Enter Pokemon ID or Name:").toLowerCase()
+    console.log(pokeNameOrId)
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/${pokeNameOrId}`).then(
+        (data) => populatePokeCard(data)
+    )
 })
 
 fetchButton.addEventListener('click', () => {
@@ -11,6 +44,14 @@ fetchButton.addEventListener('click', () => {
         (data) => {
             makeCard(data)
         }
+    )
+})
+
+fetchButton.addEventListener('click', () => {
+    let pokeNameOrId = prompt("Enter Pokemon ID or Name:").toLowerCase()
+    console.log(pokeNameOrId)
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/${pokeNameOrId}`).then(
+        (data) => populatePokeCard(data)
     )
 })
 
@@ -24,31 +65,6 @@ async function getAPIData(url) {
     }
 }
 
-// function fetchKantoPokemon() {
-// function fetchKantoPokemon() {
-
-    // fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
-//     fetch('https://pokeapi.co/api/v2/pokemon?limit=25')
-
-    // .then(response => response.json())
-//     .then(response => response.json())
-
-//     .then(function(allpokemon) {
-//         allpokemon.results.forEach(function(pokemon){
-//             console.log(pokemon)
-//             makeCard(pokemon)
-// //         })
-// //     })
-// // }
-
-//     .then(function(allpokemon) {
-//         allpokemon.results.forEach(function(pokemon){
-//             console.log(pokemon)
-//             makeCard(pokemon)
-//         })
-//     })
-// }
-
 function loadPage() {
     getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=748`).then(
         async (data) => {
@@ -61,7 +77,42 @@ function loadPage() {
     )
 }
 
+function populatePokeCard(singlePokemon) {
+     let pokeScene = document.createElement('div')
+     pokeScene.className = 'scene'
+     let pokeCard = document.createElement('div')
+     pokeCard.className = 'card'
+     pokeCard.addEventListener('click', () => {
+         pokeCard.classList.toggle('is-flipped')
+     })
+     pokeCard.appendChild(populateCardFront(singlePokemon))
+     pokeCard.appendChild(populateCardBack(singlePokemon))
+     pokeScene.appendChild(pokeCard)
+     pokeGrid.appendChild(pokeScene)
+ }
 
+ function populateCardFront(pokemon) {
+    console.log(pokemon)
+    let pokeFront = document.createElement('div')
+    pokeFront.className = 'card__face card__face--front'
+    let frontLabel = document.createElement('p')
+    frontLabel.textContent = pokemon.name
+    let frontImage = document.createElement('img')
+    frontImage.src = getImageFileName(pokemon)
+
+    pokeFront.appendChild(frontLabel)
+    pokeFront.appendChild(frontImage)
+    return pokeFront
+}
+
+function populateCardBack(pokemon) {
+    let pokeBack = document.createElement('div')
+    pokeBack.className = 'card__face card__face--back'
+    let backLabel = document.createElement('p')
+    backLabel.textContent = `Moves: ${pokemon.moves.length}`
+    pokeBack.appendChild(backLabel)
+    return pokeBack
+}
 
 function makeCard(data){
     let card = document.createElement('div')
@@ -76,6 +127,7 @@ function makeCard(data){
     content.className = "content"
     front.className = "front"
     back.className = "back"
+
     ///// populate card data //////
     let nameTag = document.createElement('p')
     nameTag.textContent = data.name
