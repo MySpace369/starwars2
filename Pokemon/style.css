@@ -60,6 +60,9 @@ body {
 
 .front img {
   width: 200px;
+  align-items: center;
+  padding-top: 20px;
+  width: 170px;
 }
 
   /* main {
