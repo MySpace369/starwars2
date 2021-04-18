@@ -1,6 +1,10 @@
 body {
-    background: #eee;
+    background: black;
     font-family: 'Lily Script One';
+  }
+
+  h1 {
+    color: red;
   }
   
   .card {
@@ -31,7 +35,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px red;
   
     transition: transform 1s;
     transform-style: preserve-3d;
@@ -48,7 +52,6 @@ body {
     height: 100%;
     width: 100%;
     background: white;
-    /* line-height: 300px; */
     color:red;
     text-align: center;
     font-size: 60px;
@@ -57,14 +60,12 @@ body {
   }
 
   .back {
-    background: black;
-    /* color:rgba(0,0,0,0.1); */
+    background: red;
     transform: rotateY( 180deg );
   }
 
   .cardContainer {
     width: 1000px;
-    /* height: 5000px; */
     margin: 0 auto;
     display:flex;
     justify-content: space-around;
@@ -83,12 +84,6 @@ body {
 }
 
 .pokeball {
-  display: flex;
-  justify-content: flex-end;
-  width: 150px;
+  float:left;
+  width: 100px;
 }
-
-  /* main {
-    width: 100%;
-    margin: 0 auto;
-  } */

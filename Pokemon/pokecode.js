@@ -40,6 +40,16 @@ fetchButton.addEventListener('click', () => {
     )
 })
 
+async function getAPIData(url) {
+    try{
+        const response = await fetch(url)
+        const data = await response.json()
+            return data
+    } catch (error) {
+
+    }
+}
+
 fetchButton.addEventListener('click', () => {
     getAPIData(`https://pokeapi.co/api/v2/pokemon/25`).then(
         (data) => {
@@ -56,18 +66,8 @@ fetchButton.addEventListener('click', () => {
     )
 })
 
-async function getAPIData(url) {
-    try{
-        const response = await fetch(url)
-        const data = await response.json()
-            return data
-    } catch (error) {
-
-    }
-}
-
 function loadPage() {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=76&offset=748`).then(
+    getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=61&offset=748`).then(
         async (data) => {
             for (const singlePokemon of data.results) {
                 await getAPIData(singlePokemon.url).then(
