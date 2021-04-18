@@ -1,6 +1,7 @@
 const CARDCONTAINER = document.querySelector(".cardContainer")
 const loadButton = document.querySelector('.loadPokemon')
 const fetchButton = document.querySelector('#fetchSelectedPokemon')
+const newButton = document.querySelector('#newPokemon')
 
 class Pokemon {
     constructor(name, height, weight, abilities, moves) {
@@ -17,7 +18,7 @@ loadButton.addEventListener('click', () => {
     loadPage()
 })
 
-newButton.addEventListener('click', () => {//New Button is not defined//
+newButton.addEventListener('click', () => {
     let pokeName = prompt('What is the name of your new Pokemon?')
     let pokeHeight = prompt('What is the height of your Pokemon?')
     let pokeWeight = prompt('Pokemon weight?')
@@ -66,7 +67,7 @@ async function getAPIData(url) {
 }
 
 function loadPage() {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=25&offset=748`).then(
+    getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=76&offset=748`).then(
         async (data) => {
             for (const singlePokemon of data.results) {
                 await getAPIData(singlePokemon.url).then(
@@ -92,7 +93,6 @@ function populatePokeCard(singlePokemon) {
  }
 
  function populateCardFront(pokemon) {
-    console.log(pokemon)
     let pokeFront = document.createElement('div')
     pokeFront.className = 'card__face card__face--front'
     let frontLabel = document.createElement('p')
@@ -140,7 +140,7 @@ function makeCard(data){
     CARDCONTAINER.appendChild(card)
 }
 
-fetchKantoPokemon() 
+// fetchKantoPokemon() 
 
 
 function getImageFileName(pokemon) {
