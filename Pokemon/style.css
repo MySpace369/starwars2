@@ -1,80 +1,91 @@
 body {
-    background: black;
-    font-family: 'Lily Script One';
-  }
+  background: orange;
+  font-family: "Lily Script One";
+}
 
-  h1 {
-    color: red;
-  }
+h1 {
+  color: black;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.poketitle {
   
-  .card {
-    width: 200px;
-    height: 300px;
-    perspective: 500px;
-    margin: 10px;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-   cursor: pointer;
-   position: relative; 
-  }
+}
 
-  .card.is-flipped {
-    transform: rotateY(180deg);
+button {
+  background-color: royalblue;
+  color: white;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  perspective: 500px;
+  margin: 10px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
 }
 
 .card__face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-weight: bold;
-    backface-visibility: hidden;
-  }
-  
-  .content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 15px red;
-  
-    transition: transform 1s;
-    transform-style: preserve-3d;
-  }
-  
-  .card:hover .content {
-    transform: rotateY( 180deg ) ;
-    transition: transform 0.5s;
-  }
-  
-  .front,
-  .back {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: white;
-    color:red;
-    text-align: center;
-    font-size: 60px;
-    border-radius: 5px;
-    backface-visibility: hidden;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+  backface-visibility: hidden;
+}
 
-  .back {
-    background: red;
-    transform: rotateY( 180deg );
-  }
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 15px black;
 
-  .cardContainer {
-    width: 1000px;
-    margin: 0 auto;
-    display:flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
 
-  .front p{
-    font-size: 30px;
-  }
+.card:hover .content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: white;
+  color: red;
+  text-align: center;
+  font-size: 60px;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+.back {
+  background: red;
+  transform: rotateY(180deg);
+}
+
+.cardContainer {
+  width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.front p {
+  font-size: 30px;
+}
 
 .front img {
   width: 200px;
@@ -84,6 +95,6 @@ body {
 }
 
 .pokeball {
-  float:left;
+  float: inherit;
   width: 100px;
 }
