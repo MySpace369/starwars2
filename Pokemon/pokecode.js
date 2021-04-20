@@ -50,22 +50,6 @@ async function getAPIData(url) {
     }
 }
 
-fetchButton.addEventListener('click', () => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon/25`).then(
-        (data) => {
-            makeCard(data)
-        }
-    )
-})
-
-fetchButton.addEventListener('click', () => {
-    let pokeNameOrId = prompt("Enter Pokemon ID or Name:").toLowerCase()
-    console.log(pokeNameOrId)
-    getAPIData(`https://pokeapi.co/api/v2/pokemon/${pokeNameOrId}`).then(
-        (data) => populatePokeCard(data)
-    )
-})
-
 function loadPage() {
     getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=61&offset=748`).then(
         async (data) => {
@@ -77,6 +61,23 @@ function loadPage() {
         }
     )
 }
+
+fetchButton.addEventListener('click', () => {
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/25`).then(
+        (data) => {
+            makeCard(data)
+        }
+    )
+})
+
+fetchButton.addEventListener('click', () => {
+    let pokeNameOrId = prompt("Enter Pokemon ID or Name:").toLowerCase()//to lower case of null
+    console.log(pokeNameOrId)
+    getAPIData(`https://pokeapi.co/api/v2/pokemon/${pokeNameOrId}`).then(
+        (data) => populatePokeCard(data)
+    )
+})
+
 
 function populatePokeCard(singlePokemon) {
      let pokeScene = document.createElement('div')
@@ -110,7 +111,7 @@ function populateCardBack(pokemon) {
     let pokeBack = document.createElement('div')
     pokeBack.className = 'card__face card__face--back'
     let backLabel = document.createElement('p')
-    backLabel.textContent = `Moves: ${pokemon.moves.length}`
+    backLabel.textContent = `Moves: ${pokemon.moves.len}`
     pokeBack.appendChild(backLabel)
     return pokeBack
 }
@@ -141,13 +142,13 @@ function makeCard(data){
     CARDCONTAINER.appendChild(card)
 }
 
-// fetchKantoPokemon() 
-
-
 function getImageFileName(pokemon) {
     let pokeId
     if (pokemon.id < 10) pokeId = `00${pokemon.id}`
     if (pokemon.id > 9 && pokemon.id < 100) pokeId = `0${pokemon.id}`
     if (pokemon.id > 99 && pokemon.id < 810) pokeId = pokemon.id
+    if (pokemon.id === 900) {
+        return `images/pokeball.png`
+    }
     return `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokeId}.png`
-} 
+}

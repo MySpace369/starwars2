@@ -8,6 +8,10 @@ main {
     /* height: 100vh; */
 }
 
+.Home {
+    color: blue;
+}
+
 .shipView {
     display: flex;
     justify-content: center;

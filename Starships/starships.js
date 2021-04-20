@@ -35,7 +35,7 @@ function populateShipView(shipData) {
     removeChildren(shipView)
     let shipNum = getLastNumber(shipData.url)
     let shipImage = document.createElement('img')
-    shipImage.src = `https://starwars-visualguide.com/#/starships?${shipNum}.jpg`
+    shipImage.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`
     shipImage.addEventListener('error', (err) => {
     
         shipImage.hidden = true

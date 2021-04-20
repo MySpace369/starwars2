@@ -7,6 +7,10 @@ header {
     font-size: 2em;
 }
 
+.Home {
+    color: blue;
+}
+
 #filmlist {
     display: flex;
     flex-wrap: wrap;
