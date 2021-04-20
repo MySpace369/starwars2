@@ -1,7 +1,17 @@
 body {
   background-color: black;
   color: white;
+  padding: 25px;
 }
+
+button {
+  padding: 5px;
+}
+
+.Home {
+  color: blue;
+}
+
 
 img {
   height: 200px;

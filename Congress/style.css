@@ -3,6 +3,18 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 50px;
+}
+
+h1 {
+  padding: 5px;
+}
+
+button {
+  padding: 5px; 
+}
+
 .Home {
   color: blue;
 }

@@ -62,24 +62,25 @@ function loadPage() {
     )
 }
 
-fetchButton.addEventListener('click', () => {
-    getAPIData(`https://pokeapi.co/api/v2/pokemon/25`).then(
-        (data) => {
-            makeCard(data)
-        }
-    )
-})
+// fetchButton.addEventListener('click', () => {
+//     getAPIData(`https://pokeapi.co/api/v2/pokemon/25`).then(
+//         (data) => {
+//             makeCard(data)
+//         }
+//     )
+// })
 
 fetchButton.addEventListener('click', () => {
-    let pokeNameOrId = prompt("Enter Pokemon ID or Name:").toLowerCase()//to lower case of null
+    let pokeNameOrId = prompt("Enter Pokemon ID or Name:")
+    // .toLowerCase()//to lower case of null
     console.log(pokeNameOrId)
     getAPIData(`https://pokeapi.co/api/v2/pokemon/${pokeNameOrId}`).then(
-        (data) => populatePokeCard(data)
+        (data) => makeCard(data)
     )
 })
 
-
 function populatePokeCard(singlePokemon) {
+    console.log(singlePokemon)
      let pokeScene = document.createElement('div')
      pokeScene.className = 'scene'
      let pokeCard = document.createElement('div')
@@ -94,28 +95,6 @@ function populatePokeCard(singlePokemon) {
      pokeGrid.appendChild(pokeScene)
  }
 
- function populateCardFront(pokemon) {
-    let pokeFront = document.createElement('div')
-    pokeFront.className = 'card__face card__face--front'
-    let frontLabel = document.createElement('p')
-    frontLabel.textContent = pokemon.name
-    let frontImage = document.createElement('img')
-    frontImage.src = getImageFileName(pokemon)
-
-    pokeFront.appendChild(frontLabel)
-    pokeFront.appendChild(frontImage)
-    return pokeFront
-}
-
-function populateCardBack(pokemon) {
-    let pokeBack = document.createElement('div')
-    pokeBack.className = 'card__face card__face--back'
-    let backLabel = document.createElement('p')
-    backLabel.textContent = `Moves: ${pokemon.moves.len}`
-    pokeBack.appendChild(backLabel)
-    return pokeBack
-}
-
 function makeCard(data){
     let card = document.createElement('div')
     let content = document.createElement('div')
@@ -124,6 +103,8 @@ function makeCard(data){
   
     let frontImage = document.createElement('img')
     frontImage.src = getImageFileName(data)
+    let title = document.createElement('p')
+    title.textContent = data.name
     
     card.className = "card"
     content.className = "content"
@@ -139,8 +120,31 @@ function makeCard(data){
     content.appendChild(front)
     content.appendChild(back)
     front.appendChild(frontImage)
+    front.appendChild(title)
     CARDCONTAINER.appendChild(card)
 }
+
+ function populateCardFront(pokemon) {
+    let pokeFront = document.createElement('div')
+    pokeFront.className = 'card__face card__face--front'
+    let frontLabel = document.createElement('p')
+    frontLabel.textContent = pokemon.name
+    let frontImage = document.createElement('img')
+    frontImage.src = getImageFileName(pokemon)
+
+    pokeFront.appendChild(frontLabel)
+    pokeFront.appendChild(frontImage)
+    return pokeFront
+}
+
+function populateCardBack(pokemon) {
+    // console.log(pokemon)
+    let pokeBack = document.createElement('div')
+    pokeBack.className = 'card__face card__face--back'
+    let backLabel = document.createElement('p')
+    backLabel.textContent = `Moves: ${pokemon.moves.length}`
+    pokeBack.appendChild(backLabel)
+    }
 
 function getImageFileName(pokemon) {
     let pokeId
