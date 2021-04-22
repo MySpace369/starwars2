@@ -4,23 +4,36 @@ body {
 }
 
 p {
-  color: black;
+  color: white;
 }
-
-/* h1 {
-  color: black;
-  display: flex;
-  justify-content: space-evenly;
-} */
 
 .Home {
   color: blue;
+}
+.ability_container {
+  width: 100%;
+}
+.ability_container p {
+  width: 100%;
+  font-size: 20px;
+  
+}
+.ability_container h1 {
+  font-size: 25px;
+  color: white;
+  text-decoration: underline;
 }
 
 button {
   background-color: royalblue;
   color: white;
   padding: 5px;
+}
+
+.pokeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card {
@@ -47,6 +60,16 @@ button {
   backface-visibility: hidden;
 }
 
+/* .card__face--front {
+  background: rgb(206, 206, 240);
+  transform: rotateY(180deg);
+}
+
+.card__face--back {
+  background: rgb(206, 206, 240);
+  transform: rotateY(180deg);
+} */
+
 .content {
   position: absolute;
   width: 100%;
@@ -67,12 +90,14 @@ button {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: white;
+  background: red;
   color: red;
   text-align: center;
   font-size: 60px;
   border-radius: 5px;
   backface-visibility: hidden;
+  border-style: solid;
+  border-color: black;
 }
 
 .back {
