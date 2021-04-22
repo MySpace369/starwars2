@@ -4,21 +4,32 @@ const fetchButton = document.querySelector("#fetchSelectedPokemon");
 const newButton = document.querySelector("#newPokemon");
 
 class Pokemon {
-  constructor(name, height, weight, abilities) {
+  constructor(name, height, weight,ability) {
     this.id = 900;
     this.name = name;
     this.height = height;
     this.weight = weight;
-    this.types = [{
-      type: {
-        name: "normal",
+    this.types = [
+      {
+        type: {
+          name: "normal",
+        },
       },
-    }];
-    this.abilities = [{
-      type: {
-        name: "ability",
+    ];
+    this.abilities = [
+      {
+        ability: {
+          name: ability,
+        },
       },
-    }];
+    ];
+    this.moves = [
+      {
+        move: {
+          name: "sit",
+        }
+      }
+    ];
   }
 }
 
@@ -30,15 +41,25 @@ newButton.addEventListener("click", () => {
   let pokeName = prompt("What is the name of your new Pokemon?");
   let pokeHeight = prompt("What is the height of your Pokemon?");
   let pokeWeight = prompt("Pokemon weight?");
-  let abilites = prompt("Pokemon ability?");
-
-  let newPokemon = new Pokemon(pokeName, pokeHeight, pokeWeight, [
-    "study",
-    "game",
-  ]);
-  console.log(newPokemon);
+  //let pokeAbilities = prompt("What are your Pokemon abilities? (use a comma separated list)");
+  let pokeMove = prompt("What is your Pokemon's best move");
+  let ability = prompt("ability");
+  //let abilitiesArray = getAbilitiesArray(pokeAbilities);
+  let newPokemon = new Pokemon(pokeName, pokeHeight, pokeWeight, ability);
+  console.log(newPokemon)
   makeCard(newPokemon);
 });
+
+function getAbilitiesArray(commaString) {
+  let tempArray = commaString.split(",");
+  return tempArray.map((abilityName) => {
+    return {
+      ability: {
+        name: abilityName,
+      },
+    };
+  });
+}
 
 fetchButton.addEventListener("click", () => {
   let pokeNameOrId = prompt("Enter Pokemon ID or Name:").toLowerCase();
@@ -76,7 +97,7 @@ fetchButton.addEventListener("click", () => {
 });
 
 function populatePokeCard(singlePokemon) {
-  console.log(singlePokemon);
+  // console.log(singlePokemon);
   let pokeScene = document.createElement("div");
   pokeScene.className = "scene";
   let pokeCard = document.createElement("div");
@@ -101,11 +122,11 @@ function abilities(array) {
   for (let i = 0; i < array.length; i++) {
     let abilityName = document.createElement("p");
     abilityName.textContent = capitalize(array[i].ability.name);
-    //console.log(abilityName)
+    console.log(abilityName);
     abilityContatiner.appendChild(abilityName);
   }
   return abilityContatiner;
-  //console.log(abilityContatiner)
+  console.log(abilityContatiner);
 }
 
 function makeCard(data) {
@@ -119,6 +140,7 @@ function makeCard(data) {
   frontImage.src = getImageFileName(data);
   let title = document.createElement("p");
   title.textContent = capitalize(data.name);
+  console.log(data.name)
   card.className = "card";
   content.className = "content";
   front.className = "front";
@@ -127,7 +149,7 @@ function makeCard(data) {
   ///// back card content ///////
   setTypeStyle(data, front);
   // console.log(setTypeStyle(data,front))
-
+  console.log(data.abilities)
   let abilityContainer = abilities(data.abilities);
   //console.log(abilityContainer)
   ///// populate card data //////
@@ -167,6 +189,7 @@ function populateCardBack(pokemon) {
   pokeBack.className = "card__face card__face--back";
   let backLabel = document.createElement("p");
   backLabel.textContent = `Moves: ${pokemon.moves.length}`;
+  // backLabel.textContent = `abilities: ${pokemon.ability.length}`;
   pokeBack.appendChild(backLabel);
 }
 
@@ -176,9 +199,9 @@ function getImageFileName(pokemon) {
   if (pokemon.id > 9 && pokemon.id < 100) pokeId = `0${pokemon.id}`;
   if (pokemon.id > 99 && pokemon.id < 810) pokeId = pokemon.id;
   if (pokemon.id === 900) {
-      
     return `images/pokeball.png`;
   }
+  if (pokemon.id == null) return `images/pokeball.png`;
   return `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${pokeId}.png`;
 }
 
@@ -188,7 +211,7 @@ function setTypeStyle(data, element) {
   if (data.types.length > 1) {
     let pokeType2 = data.types[1].type.name;
     pokeTypes = [pokeType1, pokeType2];
-    console.log(pokeTypes)
+    console.log(pokeTypes);
     element.style.setProperty(
       "background",
       `linear-gradient(${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(
