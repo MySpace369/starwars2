@@ -4,7 +4,7 @@ const fetchButton = document.querySelector("#fetchSelectedPokemon");
 const newButton = document.querySelector("#newPokemon");
 
 class Pokemon {
-  constructor(name, height, weight,ability) {
+  constructor(name, height, weight, ability) {
     this.id = 900;
     this.name = name;
     this.height = height;
@@ -27,8 +27,8 @@ class Pokemon {
       {
         move: {
           name: "sit",
-        }
-      }
+        },
+      },
     ];
   }
 }
@@ -46,7 +46,7 @@ newButton.addEventListener("click", () => {
   let ability = prompt("ability");
   //let abilitiesArray = getAbilitiesArray(pokeAbilities);
   let newPokemon = new Pokemon(pokeName, pokeHeight, pokeWeight, ability);
-  console.log(newPokemon)
+  console.log(newPokemon);
   makeCard(newPokemon);
 });
 
@@ -140,7 +140,7 @@ function makeCard(data) {
   frontImage.src = getImageFileName(data);
   let title = document.createElement("p");
   title.textContent = capitalize(data.name);
-  console.log(data.name)
+  console.log(data.name);
   card.className = "card";
   content.className = "content";
   front.className = "front";
@@ -149,7 +149,7 @@ function makeCard(data) {
   ///// back card content ///////
   setTypeStyle(data, front);
   // console.log(setTypeStyle(data,front))
-  console.log(data.abilities)
+  console.log(data.abilities);
   let abilityContainer = abilities(data.abilities);
   //console.log(abilityContainer)
   ///// populate card data //////
