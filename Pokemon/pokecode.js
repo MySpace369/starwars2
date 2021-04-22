@@ -123,7 +123,7 @@ function abilities(array){
 
 
 function makeCard(data){
-    console.log(data.types[0].type.name)
+    // console.log(data.types[0].type.name)
     let card = document.createElement('div')
     let content = document.createElement('div')
     let front = document.createElement('div')
@@ -140,7 +140,7 @@ function makeCard(data){
 
     ///// back card content ///////
     setTypeStyle(data,front)
-    console.log(setTypeStyle(data,front))
+    // console.log(setTypeStyle(data,front))
     
     let abilityContainer = abilities(data.abilities)
     //console.log(abilityContainer)
