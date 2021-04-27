@@ -5,6 +5,15 @@
 
 body {
   margin: 50px;
+  
+}
+
+button {
+  color: red;
+}
+
+div {
+  color: blue;
 }
 
 h1 {
