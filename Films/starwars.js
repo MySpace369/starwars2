@@ -1,4 +1,4 @@
-import { films } from './data/films.js'
+import { films } from '../data/films.js'
 let sortfilms = films.sort((a,b) => parseFloat(a.episode_id)-parseFloat(b.episode_id))
 
 console.log (sortfilms)

@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    color: grey;
+    padding: 25px;
+}
+
+header {
+    font-size: 2em;
+}
+
+.Home {
+    color: blue;
+}
+
+#filmlist {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    text-align: center;
+    margin: 10px;
+}
+
+.container img {
+    height: 400px;
+}
